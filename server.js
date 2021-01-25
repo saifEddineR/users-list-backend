@@ -1,4 +1,5 @@
 const express = require('express');
+const dotenv = require('dotenv');
 // init app --------------------------------------
 const app = express();
 app.use(express.json());
@@ -15,4 +16,6 @@ const port = 5000;
 app.use('/users', require('./routes/userRoutes'));
 
 // create server on port 5000 -----------------------
-app.listen(port, () => console.log('connected on port: ', port));
+app.listen(process.env.PORT || port, () =>
+  console.log('connected on port: ', process.env.PORT)
+);
